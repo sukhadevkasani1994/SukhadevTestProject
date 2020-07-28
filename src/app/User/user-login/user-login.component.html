@@ -1,0 +1,35 @@
+<div class="container">
+    <form name="formName" [formGroup]="formgrp" (ngSubmit)="onclickLogin()">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>User Login</h1>
+                <div class="form-group">
+                    <label>UserName</label>
+                    <input type="email" class="form-control" placeholder="UserName" [(ngModel)]="obj.UserName"
+                        name="UserName" formControlName="UserName" />
+                    <div
+                        *ngIf="formgrp.controls['UserName'].errors && (formgrp.controls['UserName'].dirty || formgrp.controls['UserName'].touched)">
+                        <small class="text-danger" *ngIf="formgrp.get('UserName').hasError('required')"> UserName is
+                            required</small>
+                        <small class="text-danger" *ngIf="formgrp.get('UserName').hasError('pattern')">Enter a valid
+                            User Name</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="obj.Password"
+                        name="Password" formControlName="Password">
+                    <div
+                        *ngIf="formgrp.controls['Password'].errors && (formgrp.controls['Password'].dirty || formgrp.controls['Password'].touched)">
+                        <small class="text-danger" *ngIf="formgrp.get('Password').hasError('required')">Password
+                            is
+                            required</small>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger" [disabled]="!formgrp.valid" >Login</button>
+            </div>
+
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,150 @@
+<div class="container">
+    <form name="formName" [formGroup]="formgrp" (ngSubmit)="onclickSubmit()">
+        <div class="row">
+            <h1>User Registration</h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="obj.FirstName"
+                            name="FirstName" formControlName="FirstName" />
+                        <div
+                            *ngIf="formgrp.controls['FirstName'].errors && (formgrp.controls['FirstName'].dirty || formgrp.controls['FirstName'].touched)">
+                            <small class="text-danger" *ngIf="formgrp.get('FirstName').hasError('required')"> First Name
+                                is
+                                required</small>
+                            <small class="text-danger"
+                                *ngIf="formgrp.get('FirstName').hasError('minlength') && !(formgrp.get('FirstName').hasError('pattern'))">Minimum
+                                3 characters</small>
+                            <small class="text-danger" *ngIf="formgrp.get('FirstName').hasError('pattern')">Enter only
+                                characters</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="obj.LastName"
+                            name="LastName" formControlName="LastName" />
+                        <div
+                            *ngIf="formgrp.controls['LastName'].errors && (formgrp.controls['LastName'].dirty || formgrp.controls['LastName'].touched)">
+                            <small class="text-danger" *ngIf="formgrp.get('LastName').hasError('required')">Last Name is
+                                required</small>
+                            <small class="text-danger"
+                                *ngIf="formgrp.get('LastName').hasError('minlength') && !(formgrp.get('LastName').hasError('pattern'))">Minimum
+                                3 characters</small>
+                            <small class="text-danger" *ngIf="formgrp.get('LastName').hasError('pattern')">Enter only
+                                characters</small>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input type="email" class="form-control" placeholder="Email Id" [(ngModel)]="obj.EmailId"
+                            name="EmailId" formControlName="EmailId" />
+
+                        <div
+                            *ngIf="formgrp.controls['EmailId'].errors && (formgrp.controls['EmailId'].dirty || formgrp.controls['EmailId'].touched)">
+                            <small class="text-danger" *ngIf="formgrp.get('EmailId').hasError('required')"> Mail is
+                                required</small>
+                            <small class="text-danger" *ngIf="formgrp.get('EmailId').hasError('pattern')">Enter a valid
+                                Mail ID</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            <input type="number" class="form-control" placeholder="Mobile Number"
+                                [(ngModel)]="obj.MobileNum" name="MobileNum" formControlName="MobileNum" />
+
+                            <div
+                                *ngIf="formgrp.controls['MobileNum'].errors && (formgrp.controls['MobileNum'].dirty || formgrp.controls['MobileNum'].touched)">
+                                <small class="text-danger" *ngIf="formgrp.get('MobileNum').hasError('required')"> Number
+                                    is
+                                    required</small>
+                                <small class="text-danger"
+                                    *ngIf="formgrp.get('MobileNum').hasError('minlength') && !(formgrp.get('MobileNum').hasError('pattern'))">Max
+                                    10 digits</small>
+                                <small class="text-danger" *ngIf="formgrp.get('MobileNum').hasError('pattern')">Enter
+                                    only
+                                    Numbers</small>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-2 col-form-label">Gender</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" value="Male"
+                                                formControlName="Gender" [(ngModel)]="obj.Gender">Male
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" value="Female"
+                                                formControlName="Gender" [(ngModel)]="obj.Gender">Female
+                                        </label>
+                                    </div>
+                                    <div
+                                        *ngIf="formgrp.controls['Gender'].errors && (formgrp.controls['Gender'].dirty || formgrp.controls['Gender'].touched)">
+                                        <small class="text-danger" *ngIf="formgrp.get('Gender').hasError('required')">
+                                            Gender is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Password"
+                                [(ngModel)]="obj.Password" name="Password" formControlName="Password">
+                            <div
+                                *ngIf="formgrp.controls['Password'].errors && (formgrp.controls['Password'].dirty || formgrp.controls['Password'].touched)">
+                                <small class="text-danger" *ngIf="formgrp.get('Password').hasError('required')">Password
+                                    is
+                                    required</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="Confirm Password"
+                            [(ngModel)]="obj.CnfPassword" name="CnfPassword" formControlName="CnfPassword">
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <textarea class="form-control" placeholder="Address" [(ngModel)]="obj.Address" name="Address"
+                            formControlName="Address"></textarea>
+                        <div
+                            *ngIf="formgrp.controls['Address'].errors && (formgrp.controls['Address'].dirty || formgrp.controls['Address'].touched)">
+                            <small class="text-danger" *ngIf="formgrp.get('Address').hasError('required')"> Address is
+                                required</small>
+                            <small class="text-danger" *ngIf="formgrp.get('Address').hasError('pattern')">Enter
+                                characters</small>
+                            <small class="text-danger" *ngIf="formgrp.get('Address').hasError('minlength')">Min 3
+                                characters</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" [disabled]="!formgrp.valid" class="btn btn-primary">Register</button>
+
+                </div>
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-danger" routerLink="/login">Login</button>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
